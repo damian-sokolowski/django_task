@@ -1,0 +1,7 @@
+*.py[co]
+
+db.sqlite3
+.idea
+
+# Local virtual environmental:
+venv/

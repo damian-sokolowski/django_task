@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="text-center">Users</h2>
+    <div class="container">
+        <div class="row">
+            <i class="col-sm-4">Username</i>
+            <i class="col-sm-4">| Birthday</i>
+            <i class="col-sm-4">| Random Number</i>
+        </div>
+        {% for user_profile in object_list %}
+            <div class="row" onclick="location.href = '../user/{{ user_profile.user.pk }}';" style="cursor: pointer;">
+                <div class="col-sm-4">{{ user_profile.user.username }}</div>
+                <div class="col-sm-4">| {{ user_profile.birthday|date:"n/j/Y" }}</div>
+                <div class="col-sm-4">| {{ user_profile.random_number }}</div>
+            </div>
+        {% endfor %}
+        <div class="row" style="margin-top: 20px;">
+            <a href="/user/add" class="btn btn-info center-block" role="button">Add user</a>
+        </div>
+    </div>
+{% endblock %}

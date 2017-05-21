@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2 class="text-center">User details</h2>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-lg-8 col-md-offset-2">
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td>User name:</td>
+                            <td>{{ object.username }}</td>
+                        </tr>
+                        <tr>
+                            <td>First name:</td>
+                            <td>{{ object.first_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Last Name:</td>
+                            <td>{{ object.last_name }}</td>
+                        </tr>
+                        <tr>
+                            <td>Email:</td>
+                            <td><a href="mailto:{{ object.user.email }}">{{ object.user.email }}</a></td>
+                        </tr>
+                        <tr>
+                            <td>Date of Birth:</td>
+                            <td>{{ object.profile.birthday|date:"n/j/Y" }}</td>
+                        </tr>
+                        <tr>
+                            <td>Random Number:</td>
+                            <td>{{ object.profile.random_number }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a href="/user/{{ object.pk }}/edit" class="btn btn-info pull-right" role="button">Edit</a>
+                <a href="/user/{{ object.pk }}/delete" class="btn btn-danger pull-right" style="margin-right: 5px;" role="button">Delete</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,18 +1,23 @@
 {% extends "base.html" %}
+{% load my_tags %}
 
 {% block content %}
     <h2 class="text-center">Users</h2>
     <div class="container">
         <div class="row">
-            <i class="col-sm-4">Username</i>
-            <i class="col-sm-4">| Birthday</i>
-            <i class="col-sm-4">| Random Number</i>
+            <i class="col-sm-3">Username</i>
+            <i class="col-sm-2">| Birthday</i>
+            <div class="col-sm-2">| Eligible</div>
+            <i class="col-sm-3">| Random Number</i>
+            <div class="col-sm-2">| BizzFuzz</div>
         </div>
         {% for user_profile in object_list %}
             <div class="row" onclick="location.href = '../user/{{ user_profile.user.pk }}';" style="cursor: pointer;">
-                <div class="col-sm-4">{{ user_profile.user.username }}</div>
-                <div class="col-sm-4">| {{ user_profile.birthday|date:"n/j/Y" }}</div>
-                <div class="col-sm-4">| {{ user_profile.random_number }}</div>
+                <div class="col-sm-3">{{ user_profile.user.username }}</div>
+                <div class="col-sm-2">| {{ user_profile.birthday|date:"n/j/Y" }}</div>
+                <div class="col-sm-2">| {% eligible user_profile.birthday %}</div>
+                <div class="col-sm-3">| {{ user_profile.random_number }}</div>
+                <div class="col-sm-2">| {% bizzfuzz user_profile.random_number%}</div>
             </div>
         {% endfor %}
         <div class="row" style="margin-top: 20px;">
